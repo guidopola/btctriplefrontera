@@ -20,7 +20,7 @@ print("-----------------------------------------------")
 precioARS = urllib.request.urlopen('https://coinmonitor.info/data_ar.json') # Define variable que contiene el link del json
 data2 = json.loads(precioARS.read()) # Define variable que carga y lee el json con la data
 
-print("1 BTC = " + (data2["titulo"] + " | ARS")) # Dentro del json devolver el valor "titulo" en pantalla
+print("1 BTC = " + data2["titulo_2_tt"] + " Pesos Argentinos | ARS") # Dentro del json devolver el valor "titulo" en pantalla
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 print("-----------------------------------------------") 
