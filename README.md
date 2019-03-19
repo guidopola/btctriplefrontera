@@ -9,7 +9,8 @@ Gracias @Guidopola de Phone Board por la ayuda en este simple script
     
     1) git clone https://github.com/joaquinnapalma/btctriplefrontera.git
     2) cd btctriplefrontera/
-    3) python3 btc.py
+    3) sudo chmod a+x btc.py
+    4) python3 btc.py
     
     
     https://i.ibb.co/sPwSj96/script.png
