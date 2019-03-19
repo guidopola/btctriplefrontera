@@ -1,16 +1,14 @@
 
 # Bitcoin "La Triple Frontera"
+Precio de BTC en guaranies, pesos argentinos, reales y dolares.
+Gracias @guidopola por la ayuda en este simple script.
 
-Precio de btc en guaranies, pesos argentinos, reales y dolares. 
-Gracias @Guidopola de Phone Board por la ayuda en este simple script
-
-                              Pasos para la instalación
-    en terminal:
+#### Pasos para la instalación:
     
-    1) git clone https://github.com/joaquinnapalma/btctriplefrontera.git
-    2) cd btctriplefrontera/
-    3) sudo chmod a+x btc.py
-    4) python3 btc.py
+1. ```$ git clone https://github.com/joaquinnapalma/btctriplefrontera.git```
+2. ```$ cd btctriplefrontera/```
+3. ```$ sudo chmod a+x btc.py```
+4. ```$ ./btc.py```
     
     
-    https://i.ibb.co/sPwSj96/script.png
+![Image](../master/output.png?raw=true)
