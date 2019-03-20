@@ -18,7 +18,7 @@ def print_data(btc = 1.0):
   precioPYGYDOLAR = urllib.request.urlopen('https://py.coinmonitor.info/data_py.json') # Define variable que contiene el link del json
   data1 = json.loads(precioPYGYDOLAR.read()) 	# Define variable que carga y lee el json
 
-  value = '{:,.3f}'.format(convert_number(data1["stampxdolar"]) * btc).replace('.', ',').replace(',', '.', 1)
+  value = '{:,.3f}'.format(convert_number(data1["stampxdolar"]) * btc).replace('.', '.').replace(',', '.', 1)
 
   print("{:.6f} BTC = {}  Guaranies | Paraguay | PYG".format(btc, value))
   print("-----------------------------------------------") 
