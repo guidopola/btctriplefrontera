@@ -1,46 +1,59 @@
 #!/usr/bin/python3
-
+import sys
 import urllib.request
 import json
 
-#-------------------------------------------------------------------------------------------------------------------------------------------------
-print("-----------------------------------------------") 
-														#Precio BTC en GUARANIES
 
-precioPYGYDOLAR = urllib.request.urlopen('https://py.coinmonitor.info/data_py.json') # Define variable que contiene el link del json
-data1 = json.loads(precioPYGYDOLAR.read()) 	# Define variable que carga y lee el json
-
-print("1 BTC = " + (data1["stampxdolar"] + " Guaranies | Paraguay | PYG ")) # Dentro del json devolver el valor "stampxdolar" en pantalla
+# Convierte el numero a float.
+def convert_number(str_number):
+  result = str_number
+  # 24,340,003 -> 24.340.003 -> 24340.003
+  return float(result.replace(',', '.').replace('.', '', 1))
 
 
-#-------------------------------------------------------------------------------------------------------------------------------------------------
-print("-----------------------------------------------") 
-														#Precio BTC en ARS
+def print_data(btc = 1.0):
+  print("-----------------------------------------------") 
+  #Precio BTC en GUARANIES
 
-precioARS = urllib.request.urlopen('https://coinmonitor.info/data_ar.json') # Define variable que contiene el link del json
-data2 = json.loads(precioARS.read()) # Define variable que carga y lee el json con la data
+  precioPYGYDOLAR = urllib.request.urlopen('https://py.coinmonitor.info/data_py.json') # Define variable que contiene el link del json
+  data1 = json.loads(precioPYGYDOLAR.read()) 	# Define variable que carga y lee el json
 
-print("1 BTC = " + data2["titulo_2_tt"] + " Pesos Argentinos | ARS") # Dentro del json devolver el valor "titulo" en pantalla
+  value = '{:,.3f}'.format(convert_number(data1["stampxdolar"]) * btc).replace('.', ',').replace(',', '.', 1)
 
-#-------------------------------------------------------------------------------------------------------------------------------------------------
-print("-----------------------------------------------") 
-														#Precio BTC en Reales
+  print("{:.6f} BTC = {}  Guaranies | Paraguay | PYG".format(btc, value))
+  print("-----------------------------------------------") 
+  #Precio BTC en ARS
+  precioARS = urllib.request.urlopen('https://coinmonitor.info/data_ar.json') # Define variable que contiene el link del json
+  data2 = json.loads(precioARS.read()) # Define variable que carga y lee el json con la data
 
-precioBRL = urllib.request.urlopen('https://br.coinmonitor.info/data_br.json') # Define variable que contiene el link del json
-data3 = json.loads(precioBRL.read()) # Define variable que carga y lee el json 
+  value = '{:,.3f}'.format(convert_number(data2["titulo_2_tt"]) * btc).replace('.', ',').replace(',', '.', 1)
+  print("{:.6f} BTC = {} Pesos Argentinos | ARS".format(btc, value)) # Dentro del json devolver el valor "titulo" en pantalla
+  print("-----------------------------------------------") 
+  #Precio BTC en Reales
 
-print("1 BTC = " + (data3["stampxdolar"] + " Reais | Brasil | BRL ")) # Dentro del json devolver el valor "stampxdolar" en pantalla
+  precioBRL = urllib.request.urlopen('https://br.coinmonitor.info/data_br.json') # Define variable que contiene el link del json
+  data3 = json.loads(precioBRL.read()) # Define variable que carga y lee el json 
 
-#-------------------------------------------------------------------------------------------------------------------------------------------------
-print("-----------------------------------------------")														
-														#Precio BTC en USD BITSTAMP
+  value = '{:,.3f}'.format(convert_number(data3["stampxdolar"]) * btc).replace('.', ',').replace(',', '.', 1)
+  print("{:.6f} BTC = {} Reais | Brasil | BRL".format(btc, value)) # Dentro del json devolver el valor "stampxdolar" en pantalla
+  print("-----------------------------------------------")														
+  #Precio BTC en USD BITSTAMP
 
-precioUSD = urllib.request.urlopen('https://coinmonitor.info/data_ar.json') # Define variable que contiene el link del json
-data4 = json.loads(precioUSD.read()) # Define variable que carga y lee el json
+  precioUSD = urllib.request.urlopen('https://coinmonitor.info/data_ar.json') # Define variable que contiene el link del json
+  data4 = json.loads(precioUSD.read()) # Define variable que carga y lee el json
 
-print("1 BTC = " + (data4["bitstamp"] + " Bitstamp | USD ")) # Dentro del json devolver el valor "bitstamp" en pantalla
+  value = '{:,.3f}'.format(convert_number(data4["bitstamp"]) * btc).replace('.', ',').replace(',', '.', 1)
+  print("{:.6f} BTC = {} Bitstamp | USD".format(btc, value)) # Dentro del json devolver el valor "bitstamp" en pantalla
+  print("-----------------------------------------------") 
 
 
+def main(argv):
+  btc = 1.0
+  if len(argv) == 2:
+    print_data(float(argv[1]))
+  else:
+    print_data()
 
-print("-----------------------------------------------") 
 
+if __name__ == "__main__":
+  main(sys.argv)
