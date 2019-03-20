@@ -20,7 +20,7 @@ def print_data(btc = 1.0):
 
   value = '{:,.3f}'.format(convert_number(data1["stampxdolar"]) * btc).replace(',','.')
 
-  print("{:.6f} BTC = {}  Guaranies | Paraguay | PYG".format(btc, value))
+  print("{:.6f} BTC = {} Guaranies | Paraguay | PYG".format(btc, value))
   print("-----------------------------------------------") 
   #Precio BTC en ARS
   precioARS = urllib.request.urlopen('https://coinmonitor.info/data_ar.json') # Define variable que contiene el link del json
